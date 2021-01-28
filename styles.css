@@ -1,0 +1,18 @@
+h1 {
+    font-family: sans-serif;
+}
+.p {
+    color: #D60270;
+}
+.u {
+    color: #9B4F96;
+}
+.g {
+    color: #0038A8;
+}
+
+table, th, td {
+    width: 50%;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
