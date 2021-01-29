@@ -103,7 +103,7 @@
 
     function onDecPress() {
         if (!(document.querySelector("#results").innerText.includes("."))) {
-                p.innerText += ".";
+            document.querySelector("#results").innerText += ".";
         }
     }
 
@@ -111,13 +111,13 @@
         if (document.querySelector("#plusequals").className === "activeOpButton" && !(res.isNewVal)) {
             res.val = parseFloat(res.val) + parseFloat(document.querySelector("#results").innerText)
         }
-        else if (document.querySelector("#minus").className === "activeOpButton") {
+        else if (document.querySelector("#minus").className === "activeOpButton" && !(res.isNewVal)) {
             res.val -= document.querySelector("#results").innerText;
         }
-        else if (document.querySelector("#mult").className === "activeOpButton") {
+        else if (document.querySelector("#mult").className === "activeOpButton" && !(res.isNewVal)) {
             res.val *= document.querySelector("#results").innerText;
         }
-        else if (document.querySelector("#divide").className === "activeOpButton") {
+        else if (document.querySelector("#divide").className === "activeOpButton" && !(res.isNewVal)) {
             res.val /= document.querySelector("#results").innerText;
         }
         else { //none currently selected 
