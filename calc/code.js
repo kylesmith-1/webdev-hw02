@@ -4,22 +4,44 @@
 (function() {
     "use strict";
 
-    function Value(val) {
+    function Value(val, isNewVal) {
         this.val = val;
+        this.isNewVal = isNewVal;
     }
 
     function numPress(num) {
-        let ps = document.getElementsByTagName("th");
-        ps = Array.from(ps);
+        //let ps = document.getElementsByTagName("th");
+        ///ps = Array.from(ps);
 
-        ps.forEach((p) => {
-            if (p.innerText === "0") {
+        //alert("doing work...");
+        //opNotSelected = document.querySelector("#minus").className; //&& document.querySelector("#plusequals").className === "" && document.querySelector("#mult").className === "" && document.querySelector("#divide").className === "");
+
+        //if (document.querySelector("#results").innerText === "0" || document.querySelector("#minus").className === "activeOpButton" || document.querySelector("#plusequals").className === "activeOpButton" || document.querySelector("#mult").className === "activeOpButton" || document.querySelector("#divide").className === "activeOpButton") {
+        if (document.querySelector("#results").innerText === "0" || res.isNewVal) {
+            document.querySelector("#results").innerText = num;
+            res.isNewVal = false;
+        }
+        else {
+            document.querySelector("#results").innerText += num;
+        }
+
+
+        /*ps.forEach((p) => {
+            //opNotSelected = (document.querySelector("#minus").className === "" && document.querySelector("#plusequals").className === "" && document.querySelector("#mult").className === "" && document.querySelector("#divide").className === "");
+            if (p.innerText === "0") { //|| !(opNotSelected)) {
                 p.innerText = num;
             }
             else {
                 p.innerText += num;
             }
-        });
+        });*/
+    }
+
+    function deactivateOps() {
+        document.querySelector("#minus").className = "";
+        document.querySelector("#plusequals").className = "";
+        document.querySelector("#mult").className = "";
+        document.querySelector("#divide").className = "";
     }
     
     function onSevenPress() {
@@ -73,35 +95,66 @@
         numPress(0);
     }
 
-    function onPEPress() {
-        document.querySelector("#plusequals").className = "activeOpButton";
-        let ps = document.getElementsByTagName("th");
-        ps = Array.from(ps);
-
-        ps.forEach((p) => {
-            p.innerText = res.val
-        });
-    }
-
     function onClearPress() {
-        let ps = document.getElementsByTagName("th");
-        ps = Array.from(ps);
-
-        ps.forEach((p) => {
-            p.innerText = 0;
-            res.val = 0;
-        });
+        document.querySelector("#results").innerText = "0";
+        res.val = 0;
+        deactivateOps();
     }
 
     function onDecPress() {
-        let ps = document.getElementsByTagName("th");
-        ps = Array.from(ps);
-
-        ps.forEach((p) => {
-            if (!(p.innerText.includes("."))) {
+        if (!(document.querySelector("#results").innerText.includes("."))) {
                 p.innerText += ".";
-            }
-        });
+        }
+    }
+
+    function updateResBasedOnOp() {
+        if (document.querySelector("#plusequals").className === "activeOpButton" && !(res.isNewVal)) {
+            res.val = parseFloat(res.val) + parseFloat(document.querySelector("#results").innerText)
+        }
+        else if (document.querySelector("#minus").className === "activeOpButton") {
+            res.val -= document.querySelector("#results").innerText;
+        }
+        else if (document.querySelector("#mult").className === "activeOpButton") {
+            res.val *= document.querySelector("#results").innerText;
+        }
+        else if (document.querySelector("#divide").className === "activeOpButton") {
+            res.val /= document.querySelector("#results").innerText;
+        }
+        else { //none currently selected 
+            res.val = document.querySelector("#results").innerText;
+        }
+        res.isNewVal = true
+    }
+
+    function onPEPress() {
+        updateResBasedOnOp();
+        deactivateOps();
+        document.querySelector("#plusequals").className = "activeOpButton";
+        document.querySelector("#results").innerText = res.val;
+    }
+
+    function onMinusPress() {
+        //updateResBasedOnOp();
+        res.isNewVal = true;
+        res.val = document.querySelector("#results").innerText;
+        deactivateOps();
+        document.querySelector("#minus").className = "activeOpButton";
+    }
+
+    function onMultPress() {
+        //updateResBasedOnOp();
+        res.isNewVal = true;
+        res.val = document.querySelector("#results").innerText;
+        deactivateOps();
+        document.querySelector("#mult").className = "activeOpButton";
+    }
+
+    function onDividePress() {
+        //updateResBasedOnOp();
+        res.isNewVal = true;
+        res.val = document.querySelector("#results").innerText;
+        deactivateOps();
+        document.querySelector("#divide").className = "activeOpButton";
     }
 
     function init() {
@@ -135,14 +188,23 @@
         let zero = document.querySelector("#zero");
         zero.addEventListener("click", onZeroPress);
 
-        let plusequals = document.querySelector("#plusequals");
-        plusequals.addEventListener("click", onPEPress);
-
         let clear = document.querySelector("#clear");
         clear.addEventListener("click", onClearPress);
 
         let dec = document.querySelector("#dec");
         dec.addEventListener("click", onDecPress);
+
+        let plusequals = document.querySelector("#plusequals");
+        plusequals.addEventListener("click", onPEPress);
+
+        let minus = document.querySelector("#minus");
+        minus.addEventListener("click", onMinusPress);
+
+        let mult = document.querySelector("#mult");
+        mult.addEventListener("click", onMultPress);
+
+        let divide = document.querySelector("#divide");
+        divide.addEventListener("click", onDividePress);
     }
 
     window.addEventListener("load", init, false);
