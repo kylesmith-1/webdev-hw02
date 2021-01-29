@@ -7,4 +7,9 @@ table, th, td {
     width: 50%;
     border: 4px solid black;
     border-collapse: collapse;
-  }
+}
+
+button:active, .activeOpButton {
+    color: green;
+    background-color: lightgreen;
+}
