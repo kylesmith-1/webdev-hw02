@@ -30,7 +30,7 @@
             <td><button id="one">1</button></td>
             <td><button id="two">2</button></td>
             <td><button id="three">3</button></td>
-            <td><button id="mult">x</button></td>
+            <td><button id="mult">×</button></td>
         </tr>
         <tr>
             <td><button id="clear">c</button></td>
@@ -40,7 +40,21 @@
         </tr>
     </table>
     </p>
+    <h2>Using the Calculator</h2>
+    <p>This calculator is intended to be used with one operation between every result calculated with the "+/=" button.
+    </p>
+    <p>If you enter in multiple operations, such as:</p>
+    <p>> 5</p>
+    <p>> ×</p>
+    <p>> 5</p>
+    <p>> -</p>
+    <p>> 3</p>
+    <p>> +/=</p>
+    <p>The calculator will consider only the last two-number operation (5 - 3) in the result (2).</p>
+    <p>Additionally, the calculator will only show one number at a time. The operation that is active is indicated by
+        the button becoming green.</p>
+    <p>Particularly large numbers will be handled (such as converted to scientific notation) per Javascript's default
+        handling of numbers.</p>
     <script src="code.js"></script>
 </body>
-
 </html>

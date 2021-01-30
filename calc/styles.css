@@ -11,8 +11,6 @@ table, td, th {
     border-collapse: collapse;
 }
 
-
-
 button:active, .activeOpButton {
     color: green;
     background-color: lightgreen;
