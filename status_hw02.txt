@@ -1,0 +1,55 @@
+Please fill in answers to the questions below:
+
+
+1. What's your name?
+
+Kyle Smith
+
+2. What hostname did you deploy to?
+
+hw02.devcalibur.com
+
+3. What's the link to your repository on github with your code?
+
+https://github.com/kylesmith-1/webdev-hw02
+
+4. How many HTML / CSS tutorial exercises did you do?
+
+Roughly 7-8.
+
+5. How comfortable do you feel with HTML and CSS now?
+
+Decently, there are still things I forget how to do. But I find
+it easier to just look those up rather than try to memorize them
+and inevitably forget.
+
+6. How many JS tutorial exercises did you do?
+
+About the same, maybe slightly more, 10 or so.
+
+7. How comfortable do you feel with JS now?
+
+Okay, I think I can get around and get stuff working, but I 
+still struggle with the idea of what's good design in JS.
+
+8. Do all of your HTML pages pass the W3C HTML validator?
+(https://validator.w3.org/)
+
+Yes.
+
+9. Which parts of this assignment did you have trouble with, if any?
+
+Broadly, figuring out how to design the calculator well in Javascript.
+More narrowly, I found it challenging to get all the operation buttons
+working accurately when the + had to function as the = as well.
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Task 1
+ - Task 2
+ - Task 3
+ - Task 4
+ - Task 5
+ - Task 6
+ - Task 7
+ - Task 8
+
